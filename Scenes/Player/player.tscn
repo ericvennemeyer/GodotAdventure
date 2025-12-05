@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjjmql3qp6yw"]
+[gd_scene load_steps=4 format=3 uid="uid://cjjmql3qp6yw"]
 
+[ext_resource type="Script" uid="uid://b4o5k6doionl0" path="res://Scenes/Player/player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://clx8dxpq7tpbh" path="res://Ninja Adventure - Asset Pack/Actor/Characters/Monkey/SeparateAnim/Item.png" id="1_uvnfx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a3d8c"]
@@ -7,6 +8,7 @@ radius = 7.0
 height = 16.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_a3d8c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_a3d8c")
