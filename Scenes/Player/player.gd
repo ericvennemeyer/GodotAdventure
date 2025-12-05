@@ -26,8 +26,7 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.play("move_down")
 	elif velocity.y < 0:
 		animated_sprite_2d.play("move_up")
-	
-	if velocity == Vector2.ZERO:
+	else:
 		animated_sprite_2d.stop()
 	
 	move_and_slide()
