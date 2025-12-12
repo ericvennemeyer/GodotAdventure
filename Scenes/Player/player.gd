@@ -8,7 +8,7 @@ extends CharacterBody2D
 
 
 func _ready() -> void:
-	pass
+	position = SceneManager.player_spawn_position
 
 
 func _process(delta: float) -> void:
