@@ -9,7 +9,7 @@ region = Rect2(128, 48, 16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_67lhi"]
 size = Vector2(16, 16)
 
-[node name="Block" type="RigidBody2D"]
+[node name="Block" type="RigidBody2D" groups=["pushable"]]
 gravity_scale = 0.0
 lock_rotation = true
 linear_damp = 15.0
