@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 
 @export var move_speed: float = 100.0
+@export var push_strength: float = 200.0
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -29,5 +30,16 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.play("move_up")
 	else:
 		animated_sprite_2d.stop()
+	
+	# Get the last collision
+	# If there was a collision, get the colliding node
+	# If colliding node was Block, push the block
+	var collision: KinematicCollision2D = get_last_slide_collision()
+	if collision:
+		var collider_node = collision.get_collider()
+		if collider_node is RigidBody2D:
+			var collision_normal: Vector2 = collision.get_normal()
+			collider_node.apply_central_force(-collision_normal * push_strength)
+	
 	
 	move_and_slide()
