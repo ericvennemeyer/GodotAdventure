@@ -3,13 +3,14 @@ extends CharacterBody2D
 
 
 @export var move_speed: float = 100.0
-@export var push_strength: float = 200.0
+@export var push_strength: float = 300.0
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 
 func _ready() -> void:
 	position = SceneManager.player_spawn_position
+	#Engine.max_fps = 30
 
 
 func _process(delta: float) -> void:
