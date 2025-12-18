@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cumj23uluv1ye"]
+[gd_scene load_steps=14 format=4 uid="uid://cumj23uluv1ye"]
 
 [ext_resource type="PackedScene" uid="uid://cjjmql3qp6yw" path="res://Scenes/Player/player.tscn" id="1_2p8i2"]
 [ext_resource type="Texture2D" uid="uid://crucjdjrnmc02" path="res://Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetFloor.png" id="1_l6yvh"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://btvhwurbrseas" path="res://Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetReliefDetail.png" id="3_oi8ly"]
 [ext_resource type="PackedScene" uid="uid://yp0a3er3wkx7" path="res://Scenes/SceneEntrance/scene_entrance.tscn" id="5_oi8ly"]
 [ext_resource type="PackedScene" uid="uid://bghlvm832g5de" path="res://Scenes/Block/block.tscn" id="6_12ovb"]
+[ext_resource type="PackedScene" uid="uid://cw56bv15wt6dt" path="res://Scenes/LockedDoor/locked_door.tscn" id="6_elpgg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_04h35"]
 texture = ExtResource("1_l6yvh")
@@ -804,8 +805,12 @@ tile_set = SubResource("TileSet_oi8ly")
 [node name="Camera2D" type="Camera2D" parent="ObstacleLayer/Player"]
 zoom = Vector2(5, 5)
 
+[node name="LockedDoor" parent="." node_paths=PackedStringArray("puzzle_button") instance=ExtResource("6_elpgg")]
+position = Vector2(-40, -11)
+puzzle_button = NodePath("../PuzzleButton")
+
 [node name="SceneEntrance" parent="." instance=ExtResource("5_oi8ly")]
-position = Vector2(-40, -10)
+position = Vector2(-40, -12)
 next_scene = "res://Scenes/DungeonScene/dungeon_scene.tscn"
 player_spawn_position = Vector2(0, 70)
 
