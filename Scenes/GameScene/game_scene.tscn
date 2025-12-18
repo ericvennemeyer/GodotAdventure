@@ -807,7 +807,7 @@ zoom = Vector2(5, 5)
 
 [node name="LockedDoor" parent="." node_paths=PackedStringArray("puzzle_button") instance=ExtResource("6_elpgg")]
 position = Vector2(-40, -11)
-puzzle_button = NodePath("../PuzzleButton")
+puzzle_button = [NodePath("../PuzzleButton")]
 
 [node name="SceneEntrance" parent="." instance=ExtResource("5_oi8ly")]
 position = Vector2(-40, -12)

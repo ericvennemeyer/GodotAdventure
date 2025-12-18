@@ -9,7 +9,8 @@ extends CharacterBody2D
 
 
 func _ready() -> void:
-	position = SceneManager.player_spawn_position
+	if SceneManager.player_spawn_position != Vector2.ZERO:
+		position = SceneManager.player_spawn_position
 	#Engine.max_fps = 30
 
 
