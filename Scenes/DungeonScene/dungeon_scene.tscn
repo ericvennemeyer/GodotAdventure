@@ -822,6 +822,7 @@ position = Vector2(-72, -40)
 
 [node name="SingleUseButton" parent="." instance=ExtResource("4_n5fck")]
 position = Vector2(48, -128)
+collision_mask = 1
 is_single_use = true
 
 [node name="SceneEntrance" parent="." instance=ExtResource("2_okyhq")]
@@ -851,3 +852,4 @@ position = Vector2(-56, -40)
 
 [node name="IceBlock" parent="." instance=ExtResource("8_odg1s")]
 position = Vector2(160, -24)
+collision_mask = 1
