@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6dt3xunggafw"]
+
+[ext_resource type="Texture2D" uid="uid://cl31a08q0r5v6" path="res://Ninja Adventure - Asset Pack/Actor/Characters/Hunter/SpriteSheet.png" id="1_3am0f"]
+[ext_resource type="Script" uid="uid://cy7ydkv8knda2" path="res://Scenes/NPC/npc.gd" id="1_bjna2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3am0f"]
+size = Vector2(12, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjna2"]
+atlas = ExtResource("1_3am0f")
+region = Rect2(0, 0, 16, 16)
+
+[node name="NPC" type="StaticBody2D"]
+script = ExtResource("1_bjna2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_3am0f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_bjna2")
