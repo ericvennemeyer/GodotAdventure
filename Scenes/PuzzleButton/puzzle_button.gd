@@ -5,8 +5,9 @@ extends Area2D
 signal pressed
 signal unpressed
 
-var bodies_on_top: int = 0
+@export var is_single_use: bool = false
 
+var bodies_on_top: int = 0
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -20,6 +21,9 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_body_exited(body: Node2D) -> void:
+	if is_single_use:
+		return
+	
 	bodies_on_top -= 1
 	if bodies_on_top == 0:
 		unpressed.emit()
