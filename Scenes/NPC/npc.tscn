@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6dt3xunggafw"]
+[gd_scene load_steps=8 format=3 uid="uid://c6dt3xunggafw"]
 
 [ext_resource type="Texture2D" uid="uid://cl31a08q0r5v6" path="res://Ninja Adventure - Asset Pack/Actor/Characters/Hunter/SpriteSheet.png" id="1_3am0f"]
 [ext_resource type="Script" uid="uid://cy7ydkv8knda2" path="res://Scenes/NPC/npc.gd" id="1_bjna2"]
+[ext_resource type="Texture2D" uid="uid://blu8r1cmd81s0" path="res://Ninja Adventure - Asset Pack/Ui/Dialog/DialogBoxFaceset.png" id="3_0s07e"]
+[ext_resource type="Texture2D" uid="uid://8b6y5vc4vo1m" path="res://Ninja Adventure - Asset Pack/Actor/Characters/Hunter/Faceset.png" id="4_aqj1y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3am0f"]
 size = Vector2(12, 13)
@@ -9,6 +11,10 @@ size = Vector2(12, 13)
 [sub_resource type="AtlasTexture" id="AtlasTexture_bjna2"]
 atlas = ExtResource("1_3am0f")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_n8r46"]
+font_size = 64
+font_color = Color(0, 0, 0, 1)
 
 [node name="NPC" type="StaticBody2D"]
 script = ExtResource("1_bjna2")
@@ -19,3 +25,39 @@ shape = SubResource("RectangleShape2D_3am0f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_bjna2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -557.0
+offset_top = -233.0
+offset_right = -257.0
+offset_bottom = -175.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(3.7, 3.7)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_0s07e")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TextureRect"]
+layout_mode = 0
+offset_left = 5.94593
+offset_top = 14.054
+offset_right = 43.9459
+offset_bottom = 52.054
+texture = ExtResource("4_aqj1y")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 214.0
+offset_top = 462.0
+offset_right = 485.0
+offset_bottom = 529.0
+text = "Hello there!"
+label_settings = SubResource("LabelSettings_n8r46")
