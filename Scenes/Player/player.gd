@@ -19,6 +19,13 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	move_player()
+	push_blocks()
+	
+	move_and_slide()
+
+
+func move_player() -> void:
 	var move_vector: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = move_vector * move_speed
 	
@@ -32,7 +39,9 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.play("move_up")
 	else:
 		animated_sprite_2d.stop()
-	
+
+
+func push_blocks() -> void:
 	# Get the last collision
 	# If there was a collision, get the colliding node
 	# If colliding node was Block, push the block
@@ -42,6 +51,3 @@ func _physics_process(delta: float) -> void:
 		if collider_node.is_in_group("pushable"):
 			var collision_normal: Vector2 = collision.get_normal()
 			collider_node.apply_central_force(-collision_normal * push_strength)
-	
-	
-	move_and_slide()
