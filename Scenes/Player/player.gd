@@ -66,4 +66,3 @@ func _on_interaction_zone_body_entered(body: Node2D) -> void:
 func _on_interaction_zone_body_exited(body: Node2D) -> void:
 	if body.is_in_group("interactable"):
 		body.can_interact = false
-		body.canvas_layer.visible = false
