@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6dt3xunggafw"]
+[gd_scene load_steps=9 format=3 uid="uid://c6dt3xunggafw"]
 
 [ext_resource type="Texture2D" uid="uid://cl31a08q0r5v6" path="res://Ninja Adventure - Asset Pack/Actor/Characters/Hunter/SpriteSheet.png" id="1_3am0f"]
 [ext_resource type="Script" uid="uid://cy7ydkv8knda2" path="res://Scenes/NPC/npc.gd" id="1_bjna2"]
@@ -16,6 +16,9 @@ region = Rect2(0, 0, 16, 16)
 font_size = 64
 font_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_aqj1y"]
+font_size = 28
+
 [node name="NPC" type="StaticBody2D" groups=["interactable"]]
 script = ExtResource("1_bjna2")
 
@@ -29,7 +32,7 @@ texture = SubResource("AtlasTexture_bjna2")
 [node name="CanvasLayer" type="CanvasLayer" parent="." groups=["interactable"]]
 visible = false
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="DialogueBoxTexture" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -46,7 +49,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("3_0s07e")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TextureRect"]
+[node name="NPCIcon" type="TextureRect" parent="CanvasLayer/DialogueBoxTexture"]
 layout_mode = 0
 offset_left = 5.94593
 offset_top = 14.054
@@ -54,10 +57,20 @@ offset_right = 43.9459
 offset_bottom = 52.054
 texture = ExtResource("4_aqj1y")
 
-[node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 214.0
-offset_top = 462.0
-offset_right = 485.0
-offset_bottom = 529.0
+[node name="DialogueLabel" type="Label" parent="CanvasLayer"]
+offset_left = 206.0
+offset_top = 458.0
+offset_right = 1106.0
+offset_bottom = 609.0
 text = "Hello there!"
 label_settings = SubResource("LabelSettings_n8r46")
+autowrap_mode = 3
+
+[node name="NameLabel" type="Label" parent="CanvasLayer"]
+offset_left = 43.0
+offset_top = 416.0
+offset_right = 273.0
+offset_bottom = 455.0
+text = "Red Hair Guy"
+label_settings = SubResource("LabelSettings_aqj1y")
+horizontal_alignment = 1
