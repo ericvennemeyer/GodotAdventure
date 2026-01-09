@@ -835,9 +835,11 @@ zoom = Vector2(5, 5)
 
 [node name="NPC" parent="ObstacleLayer" instance=ExtResource("9_nr542")]
 position = Vector2(39, -29)
+dialogue_lines = Array[String](["Hi!", "I'm just a red-haired guy.", "I have no information to share."])
 
 [node name="NPC2" parent="ObstacleLayer" instance=ExtResource("9_nr542")]
 position = Vector2(2, -23)
+dialogue_lines = Array[String](["I'm an egg!", "Isn't that cute?", "Isn't it?!"])
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" parent="ObstacleLayer/NPC2" index="0"]
@@ -857,6 +859,7 @@ text = "Egg Girl"
 
 [node name="NPC3" parent="ObstacleLayer" instance=ExtResource("9_nr542")]
 position = Vector2(-68, 5)
+dialogue_lines = Array[String](["I'm a bad dude.", "...", "That is all."])
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" parent="ObstacleLayer/NPC3" index="1"]
