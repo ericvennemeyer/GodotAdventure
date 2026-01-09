@@ -16,7 +16,7 @@ region = Rect2(0, 0, 16, 16)
 font_size = 64
 font_color = Color(0, 0, 0, 1)
 
-[node name="NPC" type="StaticBody2D"]
+[node name="NPC" type="StaticBody2D" groups=["interactable"]]
 script = ExtResource("1_bjna2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -26,7 +26,7 @@ shape = SubResource("RectangleShape2D_3am0f")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_bjna2")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." groups=["interactable"]]
 visible = false
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]

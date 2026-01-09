@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var push_strength: float = 300.0
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var interaction_collision_shape: CollisionShape2D = $InteractionZone/InteractionCollisionShape
 
 
 func _ready() -> void:
@@ -31,12 +32,16 @@ func move_player() -> void:
 	
 	if velocity.x > 0:
 		animated_sprite_2d.play("move_right")
+		interaction_collision_shape.position = Vector2(5.0, 2.0)
 	elif velocity.x < 0:
 		animated_sprite_2d.play("move_left")
+		interaction_collision_shape.position = Vector2(-5.0, 2.0)
 	elif velocity.y > 0:
 		animated_sprite_2d.play("move_down")
+		interaction_collision_shape.position = Vector2(0, 8.0)
 	elif velocity.y < 0:
 		animated_sprite_2d.play("move_up")
+		interaction_collision_shape.position = Vector2(0, -8.0)
 	else:
 		animated_sprite_2d.stop()
 
@@ -51,3 +56,13 @@ func push_blocks() -> void:
 		if collider_node.is_in_group("pushable"):
 			var collision_normal: Vector2 = collision.get_normal()
 			collider_node.apply_central_force(-collision_normal * push_strength)
+
+
+func _on_interaction_zone_body_entered(body: Node2D) -> void:
+	if body.is_in_group("interactable"):
+		body.can_interact = true
+
+
+func _on_interaction_zone_body_exited(body: Node2D) -> void:
+	if body.is_in_group("interactable"):
+		body.can_interact = false
