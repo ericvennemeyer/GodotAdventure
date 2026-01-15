@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://cumj23uluv1ye"]
+[gd_scene load_steps=27 format=4 uid="uid://cumj23uluv1ye"]
 
 [ext_resource type="PackedScene" uid="uid://cjjmql3qp6yw" path="res://Scenes/Player/player.tscn" id="1_2p8i2"]
 [ext_resource type="Texture2D" uid="uid://crucjdjrnmc02" path="res://Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetFloor.png" id="1_l6yvh"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://duipymfdifhen" path="res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaMageBlack/SpriteSheet.png" id="9_njm7v"]
 [ext_resource type="PackedScene" uid="uid://c6dt3xunggafw" path="res://Scenes/NPC/npc.tscn" id="9_nr542"]
 [ext_resource type="Texture2D" uid="uid://dwnbmhtugfjk8" path="res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaMageBlack/Faceset.png" id="10_bkvnf"]
+[ext_resource type="PackedScene" uid="uid://bc78a6sm7urcj" path="res://Scenes/Switch/switch.tscn" id="14_bkvnf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_04h35"]
 texture = ExtResource("1_l6yvh")
@@ -912,6 +913,9 @@ shape = SubResource("RectangleShape2D_g3lhp")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="PuzzleWalls"]
 position = Vector2(45, 4)
 shape = SubResource("RectangleShape2D_dc78n")
+
+[node name="Switch" parent="." instance=ExtResource("14_bkvnf")]
+position = Vector2(-24, 31)
 
 [editable path="ObstacleLayer/NPC2"]
 [editable path="ObstacleLayer/NPC3"]
