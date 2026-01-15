@@ -13,18 +13,18 @@ var is_activated: bool = false
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and can_interact:
 		if is_activated:
-			animated_sprite_2d.play("deactivated")
-			switch_deactivated.emit()
-			is_activated = false
+			deactivate_switch()
 		else:
-			animated_sprite_2d.play("activated")
-			switch_activated.emit()
-			is_activated = true
+			activate_switch()
 
 
-func _on_switch_activated() -> void:
-	print("switch activated")
+func activate_switch():
+	animated_sprite_2d.play("activated")
+	switch_activated.emit()
+	is_activated = true
 
 
-func _on_switch_deactivated() -> void:
-	print("switch deactivated")
+func deactivate_switch():
+	animated_sprite_2d.play("deactivated")
+	switch_deactivated.emit()
+	is_activated = false
