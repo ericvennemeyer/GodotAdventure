@@ -10,6 +10,8 @@ extends CharacterBody2D
 
 
 func _ready() -> void:
+	update_treasure_label()
+	
 	if SceneManager.player_spawn_position != Vector2.ZERO:
 		position = SceneManager.player_spawn_position
 	#Engine.max_fps = 30
@@ -22,6 +24,8 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	move_player()
 	push_blocks()
+	
+	update_treasure_label()
 	
 	move_and_slide()
 
@@ -44,6 +48,11 @@ func move_player() -> void:
 		interaction_collision_shape.position = Vector2(0, -8.0)
 	else:
 		animated_sprite_2d.stop()
+
+
+func update_treasure_label() -> void:
+	var treasure_amount: int = SceneManager.open_chests.size()
+	%TreasureLabel.text = str(treasure_amount)
 
 
 func push_blocks() -> void:

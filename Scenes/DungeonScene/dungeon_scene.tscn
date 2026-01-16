@@ -890,6 +890,10 @@ chest_name = "Chest 01"
 position = Vector2(0, 40)
 chest_name = "Chest 02"
 
+[node name="TreasureChest4" parent="." instance=ExtResource("13_x00t5")]
+position = Vector2(40, -6)
+chest_name = "Chest 02"
+
 [connection signal="puzzle_failed" from="SwitchPuzzleManager" to="SecretWallLayer" method="enable_secret_wall"]
 [connection signal="puzzle_solved" from="SwitchPuzzleManager" to="SecretWallLayer" method="disable_secret_wall"]
 [connection signal="switch_activated" from="Switch" to="SwitchPuzzleManager" method="increase_score"]
