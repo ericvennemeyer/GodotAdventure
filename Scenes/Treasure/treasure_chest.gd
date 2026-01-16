@@ -1,11 +1,18 @@
 extends StaticBody2D
 
+@export var chest_name: String
 
 var can_interact: bool = false
 var is_open: bool = false
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
+
+
+func _ready() -> void:
+	if SceneManager.open_chests.has(chest_name):
+		is_open = true
+		animated_sprite_2d.play("open")
 
 
 func _process(delta: float) -> void:
@@ -17,6 +24,8 @@ func _process(delta: float) -> void:
 func open_chest() -> void:
 	animated_sprite_2d.play("open")
 	is_open = true
+	if chest_name:
+		SceneManager.open_chests.append(chest_name)
 	
 	sprite_2d.visible = true
 	var tween = get_tree().create_tween()
