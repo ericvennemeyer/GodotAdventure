@@ -1,0 +1,27 @@
+extends StaticBody2D
+
+
+var can_interact: bool = false
+var is_open: bool = false
+
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sprite_2d: Sprite2D = $Sprite2D
+
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("interact") and can_interact:
+		if not is_open:
+			open_chest()
+
+
+func open_chest() -> void:
+	animated_sprite_2d.play("open")
+	is_open = true
+	
+	sprite_2d.visible = true
+	var tween = get_tree().create_tween()
+	tween.tween_property(sprite_2d, "position", Vector2.UP * 10, 0.5).as_relative()
+	tween.tween_callback(func(): 
+		await get_tree().create_timer(0.5).timeout
+		sprite_2d.visible = false
+		)
