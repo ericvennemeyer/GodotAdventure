@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://gsm365ba84hg"]
+[gd_scene load_steps=17 format=4 uid="uid://gsm365ba84hg"]
 
 [ext_resource type="PackedScene" uid="uid://cjjmql3qp6yw" path="res://Scenes/Player/player.tscn" id="1_xuufh"]
 [ext_resource type="Texture2D" uid="uid://3m84b4tybr5n" path="res://Ninja Adventure - Asset Pack/Backgrounds/Tilesets/Interior/TilesetInteriorFloor.png" id="2_6f4q3"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://fwtw1j05gei3" path="res://Scenes/PuzzleButton/puzzle_button.tscn" id="6_00mv7"]
 [ext_resource type="PackedScene" uid="uid://bghlvm832g5de" path="res://Scenes/Block/block.tscn" id="7_8ho00"]
 [ext_resource type="PackedScene" uid="uid://burx7chpk7wed" path="res://Scenes/Block/ice_block.tscn" id="8_odg1s"]
+[ext_resource type="PackedScene" uid="uid://bkoinivvb4h8a" path="res://Scenes/Switch/switch_puzzle_manager.tscn" id="11_g75ix"]
 [ext_resource type="PackedScene" uid="uid://bc78a6sm7urcj" path="res://Scenes/Switch/switch.tscn" id="11_nqymn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_102mq"]
@@ -860,8 +861,29 @@ position = Vector2(-56, -40)
 position = Vector2(160, -24)
 collision_mask = 1
 
-[node name="Switch" parent="." instance=ExtResource("11_nqymn")]
-position = Vector2(216, -112)
+[node name="SwitchPuzzleManager" parent="." instance=ExtResource("11_g75ix")]
+position = Vector2(216, -136)
+target_score = 2
 
-[connection signal="switch_activated" from="Switch" to="SecretWallLayer" method="disable_secret_wall"]
-[connection signal="switch_deactivated" from="Switch" to="SecretWallLayer" method="enable_secret_wall"]
+[node name="Switch" parent="." instance=ExtResource("11_nqymn")]
+position = Vector2(168, -136)
+
+[node name="Switch2" parent="." instance=ExtResource("11_nqymn")]
+position = Vector2(192, -136)
+
+[node name="Switch3" parent="." instance=ExtResource("11_nqymn")]
+position = Vector2(240, -136)
+
+[node name="Switch4" parent="." instance=ExtResource("11_nqymn")]
+position = Vector2(264, -136)
+
+[connection signal="puzzle_failed" from="SwitchPuzzleManager" to="SecretWallLayer" method="enable_secret_wall"]
+[connection signal="puzzle_solved" from="SwitchPuzzleManager" to="SecretWallLayer" method="disable_secret_wall"]
+[connection signal="switch_activated" from="Switch" to="SwitchPuzzleManager" method="increase_score"]
+[connection signal="switch_deactivated" from="Switch" to="SwitchPuzzleManager" method="decrease_score"]
+[connection signal="switch_activated" from="Switch2" to="SwitchPuzzleManager" method="decrease_score"]
+[connection signal="switch_deactivated" from="Switch2" to="SwitchPuzzleManager" method="increase_score"]
+[connection signal="switch_activated" from="Switch3" to="SwitchPuzzleManager" method="increase_score"]
+[connection signal="switch_deactivated" from="Switch3" to="SwitchPuzzleManager" method="decrease_score"]
+[connection signal="switch_activated" from="Switch4" to="SwitchPuzzleManager" method="decrease_score"]
+[connection signal="switch_deactivated" from="Switch4" to="SwitchPuzzleManager" method="increase_score"]
