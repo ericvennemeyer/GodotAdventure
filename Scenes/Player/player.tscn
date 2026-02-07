@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://cjjmql3qp6yw"]
+[gd_scene load_steps=31 format=3 uid="uid://cjjmql3qp6yw"]
 
 [ext_resource type="Script" uid="uid://b4o5k6doionl0" path="res://Scenes/Player/player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://dgvf1r2hncwr6" path="res://Ninja Adventure - Asset Pack/Actor/Characters/Monkey/SeparateAnim/Walk.png" id="2_xpcdj"]
 [ext_resource type="Texture2D" uid="uid://dbw08leqntj8x" path="res://Ninja Adventure - Asset Pack/Items/Scroll/ScrollEmpty.png" id="3_xpcdj"]
+[ext_resource type="Texture2D" uid="uid://sed68cdpaf5d" path="res://Ninja Adventure - Asset Pack/Ui/LifeReceptacle/heart_2.png" id="4_mtuoh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3d8c"]
 atlas = ExtResource("2_xpcdj")
@@ -149,6 +150,57 @@ size = Vector2(8, 8)
 [sub_resource type="LabelSettings" id="LabelSettings_mtuoh"]
 font_size = 48
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnuln"]
+atlas = ExtResource("4_mtuoh")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqm4k"]
+atlas = ExtResource("4_mtuoh")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcvs5"]
+atlas = ExtResource("4_mtuoh")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8ma5"]
+atlas = ExtResource("4_mtuoh")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xpcdj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnuln")
+}],
+"loop": true,
+"name": &"0_hp",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqm4k")
+}],
+"loop": true,
+"name": &"1_hp",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rcvs5")
+}],
+"loop": true,
+"name": &"2_hp",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8ma5")
+}],
+"loop": true,
+"name": &"3_hp",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_xpcdj"]
 radius = 3.0
 
@@ -177,9 +229,9 @@ debug_color = Color(0.862304, 0.000635518, 0.869902, 0.42)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
-offset_left = 13.0
+offset_left = 105.0
 offset_top = 13.0
-offset_right = 146.0
+offset_right = 238.0
 offset_bottom = 88.0
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
@@ -202,6 +254,12 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_mtuoh")
+
+[node name="HPBar" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(51, 51)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_xpcdj")
+animation = &"3_hp"
 
 [node name="HitBoxArea2D" type="Area2D" parent="."]
 collision_layer = 2

@@ -7,10 +7,12 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var interaction_collision_shape: CollisionShape2D = $InteractionZone/InteractionCollisionShape
+@onready var hp_bar: AnimatedSprite2D = $CanvasLayer/HPBar
 
 
 func _ready() -> void:
 	update_treasure_label()
+	update_hp_bar()
 	
 	if SceneManager.player_spawn_position != Vector2.ZERO:
 		position = SceneManager.player_spawn_position
@@ -72,6 +74,18 @@ func die() -> void:
 	get_tree().call_deferred("reload_current_scene")
 
 
+func update_hp_bar() -> void:
+	match SceneManager.player_hp:
+		3:
+			hp_bar.play("3_hp")
+		2:
+			hp_bar.play("2_hp")
+		1:
+			hp_bar.play("1_hp")
+		0:
+			hp_bar.play("0_hp")
+
+
 func _on_interaction_zone_body_entered(body: Node2D) -> void:
 	if body.is_in_group("interactable"):
 		body.can_interact = true
@@ -84,5 +98,6 @@ func _on_interaction_zone_body_exited(body: Node2D) -> void:
 
 func _on_hit_box_area_2d_body_entered(body: Node2D) -> void:
 	SceneManager.player_hp -= 1
+	update_hp_bar()
 	if SceneManager.player_hp <= 0:
 		die()
