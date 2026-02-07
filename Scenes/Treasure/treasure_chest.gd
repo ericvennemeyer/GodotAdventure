@@ -7,6 +7,7 @@ var is_open: bool = false
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 func _ready() -> void:
@@ -22,6 +23,7 @@ func _process(delta: float) -> void:
 
 
 func open_chest() -> void:
+	audio_stream_player_2d.play()
 	animated_sprite_2d.play("open")
 	is_open = true
 	if chest_name:

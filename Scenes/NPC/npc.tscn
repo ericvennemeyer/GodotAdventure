@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c6dt3xunggafw"]
+[gd_scene load_steps=10 format=3 uid="uid://c6dt3xunggafw"]
 
 [ext_resource type="Texture2D" uid="uid://cl31a08q0r5v6" path="res://Ninja Adventure - Asset Pack/Actor/Characters/Hunter/SpriteSheet.png" id="1_3am0f"]
 [ext_resource type="Script" uid="uid://cy7ydkv8knda2" path="res://Scenes/NPC/npc.gd" id="1_bjna2"]
 [ext_resource type="Texture2D" uid="uid://blu8r1cmd81s0" path="res://Ninja Adventure - Asset Pack/Ui/Dialog/DialogBoxFaceset.png" id="3_0s07e"]
 [ext_resource type="Texture2D" uid="uid://8b6y5vc4vo1m" path="res://Ninja Adventure - Asset Pack/Actor/Characters/Hunter/Faceset.png" id="4_aqj1y"]
+[ext_resource type="AudioStream" uid="uid://c3mxdocu3xdhn" path="res://Ninja Adventure - Asset Pack/Sounds/Game/MiniImpact.wav" id="5_n8r46"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3am0f"]
 size = Vector2(12, 13)
@@ -75,3 +76,6 @@ offset_bottom = 455.0
 text = "Red Hair Guy"
 label_settings = SubResource("LabelSettings_aqj1y")
 horizontal_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_n8r46")

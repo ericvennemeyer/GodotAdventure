@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8ujmgxc7vlye"]
+[gd_scene load_steps=9 format=3 uid="uid://b8ujmgxc7vlye"]
 
 [ext_resource type="Texture2D" uid="uid://dg71lwsgamyeu" path="res://Ninja Adventure - Asset Pack/Items/Treasure/BigTreasureChest.png" id="1_cvyto"]
 [ext_resource type="Script" uid="uid://chjnvtqecc465" path="res://Scenes/Treasure/treasure_chest.gd" id="1_n8ksy"]
 [ext_resource type="Texture2D" uid="uid://dbw08leqntj8x" path="res://Ninja Adventure - Asset Pack/Items/Scroll/ScrollEmpty.png" id="3_6m4gy"]
+[ext_resource type="AudioStream" uid="uid://blkhdrd8p4bhy" path="res://Ninja Adventure - Asset Pack/Sounds/Game/Secret1.wav" id="4_rhbv6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n8ksy"]
 atlas = ExtResource("1_cvyto")
@@ -50,3 +51,6 @@ shape = SubResource("RectangleShape2D_cvyto")
 visible = false
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_6m4gy")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_rhbv6")

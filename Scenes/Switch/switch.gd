@@ -8,10 +8,12 @@ var can_interact: bool = false
 var is_activated: bool = false
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and can_interact:
+		audio_stream_player_2d.play()
 		if is_activated:
 			deactivate_switch()
 		else:

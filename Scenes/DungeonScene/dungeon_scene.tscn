@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://gsm365ba84hg"]
+[gd_scene load_steps=19 format=4 uid="uid://gsm365ba84hg"]
 
 [ext_resource type="PackedScene" uid="uid://cjjmql3qp6yw" path="res://Scenes/Player/player.tscn" id="1_xuufh"]
 [ext_resource type="Texture2D" uid="uid://3m84b4tybr5n" path="res://Ninja Adventure - Asset Pack/Backgrounds/Tilesets/Interior/TilesetInteriorFloor.png" id="2_6f4q3"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bkoinivvb4h8a" path="res://Scenes/Switch/switch_puzzle_manager.tscn" id="11_g75ix"]
 [ext_resource type="PackedScene" uid="uid://bc78a6sm7urcj" path="res://Scenes/Switch/switch.tscn" id="11_nqymn"]
 [ext_resource type="PackedScene" uid="uid://b8ujmgxc7vlye" path="res://Scenes/Treasure/treasure_chest.tscn" id="13_x00t5"]
+[ext_resource type="AudioStream" uid="uid://dmup88w1v0ftd" path="res://Ninja Adventure - Asset Pack/Musics/30 - Ruins.ogg" id="14_r5l8u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_102mq"]
 texture = ExtResource("2_6f4q3")
@@ -893,6 +894,12 @@ chest_name = "Chest 02"
 [node name="TreasureChest4" parent="." instance=ExtResource("13_x00t5")]
 position = Vector2(40, -6)
 chest_name = "Chest 02"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_r5l8u")
+volume_db = -5.0
+autoplay = true
+parameters/looping = true
 
 [connection signal="puzzle_failed" from="SwitchPuzzleManager" to="SecretWallLayer" method="enable_secret_wall"]
 [connection signal="puzzle_solved" from="SwitchPuzzleManager" to="SecretWallLayer" method="disable_secret_wall"]

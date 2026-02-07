@@ -8,10 +8,12 @@ var dialogue_index: int = 0
 
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var dialogue_label: Label = $CanvasLayer/DialogueLabel
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and can_interact:
+		audio_stream_player_2d.play()
 		if dialogue_index < dialogue_lines.size():
 			get_tree().paused = true
 			canvas_layer.visible = true
