@@ -67,6 +67,11 @@ func push_blocks() -> void:
 			collider_node.apply_central_force(-collision_normal * push_strength)
 
 
+func die() -> void:
+	SceneManager.player_hp = 3
+	get_tree().call_deferred("reload_current_scene")
+
+
 func _on_interaction_zone_body_entered(body: Node2D) -> void:
 	if body.is_in_group("interactable"):
 		body.can_interact = true
@@ -75,3 +80,9 @@ func _on_interaction_zone_body_entered(body: Node2D) -> void:
 func _on_interaction_zone_body_exited(body: Node2D) -> void:
 	if body.is_in_group("interactable"):
 		body.can_interact = false
+
+
+func _on_hit_box_area_2d_body_entered(body: Node2D) -> void:
+	SceneManager.player_hp -= 1
+	if SceneManager.player_hp <= 0:
+		die()

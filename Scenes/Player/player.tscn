@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cjjmql3qp6yw"]
+[gd_scene load_steps=25 format=3 uid="uid://cjjmql3qp6yw"]
 
 [ext_resource type="Script" uid="uid://b4o5k6doionl0" path="res://Scenes/Player/player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://dgvf1r2hncwr6" path="res://Ninja Adventure - Asset Pack/Actor/Characters/Monkey/SeparateAnim/Walk.png" id="2_xpcdj"]
@@ -149,6 +149,9 @@ size = Vector2(8, 8)
 [sub_resource type="LabelSettings" id="LabelSettings_mtuoh"]
 font_size = 48
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_xpcdj"]
+radius = 3.0
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 7
@@ -157,7 +160,7 @@ script = ExtResource("1_a3d8c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a3d8c")
-animation = &"move_left"
+animation = &"move_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
@@ -200,5 +203,14 @@ layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_mtuoh")
 
+[node name="HitBoxArea2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxArea2D"]
+shape = SubResource("CircleShape2D_xpcdj")
+debug_color = Color(1, 0.0129377, 0.0113696, 0.42)
+
 [connection signal="body_entered" from="InteractionZone" to="." method="_on_interaction_zone_body_entered"]
 [connection signal="body_exited" from="InteractionZone" to="." method="_on_interaction_zone_body_exited"]
+[connection signal="body_entered" from="HitBoxArea2D" to="." method="_on_hit_box_area_2d_body_entered"]
