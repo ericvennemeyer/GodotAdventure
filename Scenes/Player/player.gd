@@ -8,11 +8,17 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var interaction_collision_shape: CollisionShape2D = $InteractionZone/InteractionCollisionShape
 @onready var hp_bar: AnimatedSprite2D = $CanvasLayer/HPBar
+@onready var sword: Sprite2D = $Sword
+@onready var sword_hurt_box: Area2D = $Sword/SwordHurtBox
+@onready var attack_timer: Timer = $AttackTimer
 
 
 func _ready() -> void:
 	update_treasure_label()
 	update_hp_bar()
+	
+	sword.visible = false
+	sword_hurt_box.monitoring = false
 	
 	if SceneManager.player_spawn_position != Vector2.ZERO:
 		position = SceneManager.player_spawn_position
@@ -28,6 +34,9 @@ func _physics_process(delta: float) -> void:
 	push_blocks()
 	
 	update_treasure_label()
+	
+	if Input.is_action_just_pressed("interact") and attack_timer.time_left <= 0:
+		attack()
 	
 	move_and_slide()
 
@@ -86,6 +95,12 @@ func update_hp_bar() -> void:
 			hp_bar.play("0_hp")
 
 
+func attack() -> void:
+	attack_timer.start()
+	sword.visible = true
+	sword_hurt_box.monitoring = true
+
+
 func _on_interaction_zone_body_entered(body: Node2D) -> void:
 	if body.is_in_group("interactable"):
 		body.can_interact = true
@@ -101,3 +116,12 @@ func _on_hit_box_area_2d_body_entered(body: Node2D) -> void:
 	update_hp_bar()
 	if SceneManager.player_hp <= 0:
 		die()
+
+
+func _on_sword_hurt_box_body_entered(body: Node2D) -> void:
+	body.queue_free()
+
+
+func _on_attack_timer_timeout() -> void:
+	sword.visible = false
+	sword_hurt_box.monitoring = false

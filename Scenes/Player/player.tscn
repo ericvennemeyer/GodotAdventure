@@ -1,9 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://cjjmql3qp6yw"]
+[gd_scene load_steps=33 format=3 uid="uid://cjjmql3qp6yw"]
 
 [ext_resource type="Script" uid="uid://b4o5k6doionl0" path="res://Scenes/Player/player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://dgvf1r2hncwr6" path="res://Ninja Adventure - Asset Pack/Actor/Characters/Monkey/SeparateAnim/Walk.png" id="2_xpcdj"]
 [ext_resource type="Texture2D" uid="uid://dbw08leqntj8x" path="res://Ninja Adventure - Asset Pack/Items/Scroll/ScrollEmpty.png" id="3_xpcdj"]
 [ext_resource type="Texture2D" uid="uid://sed68cdpaf5d" path="res://Ninja Adventure - Asset Pack/Ui/LifeReceptacle/heart_2.png" id="4_mtuoh"]
+[ext_resource type="Texture2D" uid="uid://bq2gbwrmxveg1" path="res://Ninja Adventure - Asset Pack/Items/Weapons/Sword/Sprite.png" id="5_htcer"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3d8c"]
 atlas = ExtResource("2_xpcdj")
@@ -204,6 +205,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_xpcdj"]
 radius = 3.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dd0ac"]
+size = Vector2(6, 18)
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 7
@@ -269,6 +273,23 @@ collision_mask = 16
 shape = SubResource("CircleShape2D_xpcdj")
 debug_color = Color(1, 0.0129377, 0.0113696, 0.42)
 
+[node name="Sword" type="Sprite2D" parent="."]
+position = Vector2(0, -18)
+texture = ExtResource("5_htcer")
+
+[node name="SwordHurtBox" type="Area2D" parent="Sword"]
+collision_layer = 2
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sword/SwordHurtBox"]
+shape = SubResource("RectangleShape2D_dd0ac")
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
 [connection signal="body_entered" from="InteractionZone" to="." method="_on_interaction_zone_body_entered"]
 [connection signal="body_exited" from="InteractionZone" to="." method="_on_interaction_zone_body_exited"]
 [connection signal="body_entered" from="HitBoxArea2D" to="." method="_on_hit_box_area_2d_body_entered"]
+[connection signal="body_entered" from="Sword/SwordHurtBox" to="." method="_on_sword_hurt_box_body_entered"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
