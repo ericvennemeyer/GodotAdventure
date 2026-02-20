@@ -5,12 +5,16 @@ extends CharacterBody2D
 @export var move_speed: float = 100.0
 @export var push_strength: float = 300.0
 
+var is_attacking: bool = false
+var player_animation: String
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var interaction_collision_shape: CollisionShape2D = $InteractionZone/InteractionCollisionShape
 @onready var hp_bar: AnimatedSprite2D = $CanvasLayer/HPBar
 @onready var sword: Sprite2D = $Sword
 @onready var sword_hurt_box: Area2D = $Sword/SwordHurtBox
 @onready var attack_timer: Timer = $AttackTimer
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 func _ready() -> void:
@@ -30,7 +34,8 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	move_player()
+	if not is_attacking:
+		move_player()
 	push_blocks()
 	
 	update_treasure_label()
@@ -99,6 +104,23 @@ func attack() -> void:
 	attack_timer.start()
 	sword.visible = true
 	sword_hurt_box.monitoring = true
+	is_attacking = true
+	velocity = Vector2.ZERO
+	
+	player_animation = animated_sprite_2d.animation
+	match player_animation:
+		"move_down":
+			animated_sprite_2d.play("attack_down")
+			animation_player.play("attack_down")
+		"move_up":
+			animated_sprite_2d.play("attack_up")
+			animation_player.play("attack_up")
+		"move_left":
+			animated_sprite_2d.play("attack_left")
+			animation_player.play("attack_left")
+		"move_right":
+			animated_sprite_2d.play("attack_right")
+			animation_player.play("attack_right")
 
 
 func _on_interaction_zone_body_entered(body: Node2D) -> void:
@@ -125,3 +147,5 @@ func _on_sword_hurt_box_body_entered(body: Node2D) -> void:
 func _on_attack_timer_timeout() -> void:
 	sword.visible = false
 	sword_hurt_box.monitoring = false
+	is_attacking = false
+	animated_sprite_2d.play(player_animation)
