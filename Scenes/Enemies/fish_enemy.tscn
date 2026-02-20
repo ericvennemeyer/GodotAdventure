@@ -1,6 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bctnb2shc7j45"]
+[gd_scene load_steps=23 format=3 uid="uid://bctnb2shc7j45"]
 
+[ext_resource type="Script" uid="uid://bf27gvx0w1bdr" path="res://Scenes/Enemies/fish_enemy.gd" id="1_dteix"]
 [ext_resource type="Texture2D" uid="uid://d2gx818i7csmf" path="res://Ninja Adventure - Asset Pack/Actor/Monsters/FishRed/SpriteSheet.png" id="1_lc6dk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lc6dk"]
+radius = 60.075
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dteix"]
 radius = 7.0
@@ -8,6 +12,70 @@ radius = 7.0
 [sub_resource type="AtlasTexture" id="AtlasTexture_sa8qq"]
 atlas = ExtResource("1_lc6dk")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dteix"]
+atlas = ExtResource("1_lc6dk")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2a7y"]
+atlas = ExtResource("1_lc6dk")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ej8c"]
+atlas = ExtResource("1_lc6dk")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tjb0"]
+atlas = ExtResource("1_lc6dk")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxphp"]
+atlas = ExtResource("1_lc6dk")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rftbv"]
+atlas = ExtResource("1_lc6dk")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5clqm"]
+atlas = ExtResource("1_lc6dk")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_817du"]
+atlas = ExtResource("1_lc6dk")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4h8o"]
+atlas = ExtResource("1_lc6dk")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_va5e6"]
+atlas = ExtResource("1_lc6dk")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlijk"]
+atlas = ExtResource("1_lc6dk")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8buc"]
+atlas = ExtResource("1_lc6dk")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_waupe"]
+atlas = ExtResource("1_lc6dk")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2wcm"]
+atlas = ExtResource("1_lc6dk")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbky2"]
+atlas = ExtResource("1_lc6dk")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8dfk"]
+atlas = ExtResource("1_lc6dk")
+region = Rect2(16, 48, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j2a7y"]
 animations = [{
@@ -17,14 +85,95 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dteix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2a7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ej8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tjb0")
+}],
+"loop": true,
+"name": &"move_down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxphp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rftbv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5clqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_817du")
+}],
+"loop": true,
+"name": &"move_left",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4h8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_va5e6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlijk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8buc")
+}],
+"loop": true,
+"name": &"move_right",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_waupe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2wcm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbky2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8dfk")
+}],
+"loop": true,
+"name": &"move_up",
+"speed": 10.0
 }]
 
 [node name="FishEnemy" type="CharacterBody2D"]
 collision_layer = 16
+motion_mode = 1
+script = ExtResource("1_dteix")
+
+[node name="PlayerDetectArea2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectArea2D"]
+shape = SubResource("CircleShape2D_lc6dk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dteix")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_j2a7y")
+animation = &"move_up"
+autoplay = "default"
+
+[connection signal="body_entered" from="PlayerDetectArea2D" to="." method="_on_player_detect_area_2d_body_entered"]
