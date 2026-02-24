@@ -18,6 +18,7 @@ var player_animation: String
 @onready var sword_hurt_box: Area2D = $Sword/SwordHurtBox
 @onready var attack_timer: Timer = $AttackTimer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var death_timer: Timer = $DeathTimer
 
 
 func _ready() -> void:
@@ -37,6 +38,9 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if SceneManager.player_hp <= 0:
+		return
+	
 	if not is_attacking:
 		move_player()
 	push_blocks()
@@ -87,6 +91,12 @@ func push_blocks() -> void:
 
 
 func die() -> void:
+	animated_sprite_2d.play("die")
+	if death_timer.is_stopped():
+		death_timer.start()
+
+
+func _on_death_timer_timeout() -> void:
 	SceneManager.player_hp = 3
 	get_tree().call_deferred("reload_current_scene")
 
