@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @export var move_speed: float = 30.0
+@export var acceleration: float = 5.0
+@export var hp: int = 2
 
 var target: Node2D
 
@@ -17,7 +19,8 @@ func _physics_process(delta: float) -> void:
 func chase_target() -> void:
 	if target:
 		var target_direction = position.direction_to(target.position)
-		velocity = target_direction * move_speed
+		#velocity = target_direction * move_speed
+		velocity = velocity.move_toward(target_direction * move_speed, acceleration)
 
 
 func animate_enemy() -> void:

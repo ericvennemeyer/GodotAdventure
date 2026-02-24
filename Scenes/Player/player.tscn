@@ -190,6 +190,45 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="Animation" id="Animation_0u5uq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 11)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sword:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.8326]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sword:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+
 [sub_resource type="Animation" id="Animation_dd0ac"]
 resource_name = "attack_down"
 length = 0.2
@@ -231,47 +270,8 @@ tracks/2/keys = {
 "values": [Vector2(2, 2), Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_0u5uq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sword:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-1, 11)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sword:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.8326]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sword:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2, 2)]
-}
-
-[sub_resource type="Animation" id="Animation_jlvik"]
-resource_name = "attack_up"
+[sub_resource type="Animation" id="Animation_jhyir"]
+resource_name = "attack_left"
 length = 0.2
 step = 0.01
 tracks/0/type = "value"
@@ -284,7 +284,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-3, -13)]
+"values": [Vector2(-14, 5)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -308,7 +308,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [1.309, -1.309]
+"values": [-0.284489, -2.23751]
 }
 
 [sub_resource type="Animation" id="Animation_gk6dx"]
@@ -352,8 +352,8 @@ tracks/2/keys = {
 "values": [0.296706, 2.30383]
 }
 
-[sub_resource type="Animation" id="Animation_jhyir"]
-resource_name = "attack_left"
+[sub_resource type="Animation" id="Animation_jlvik"]
+resource_name = "attack_up"
 length = 0.2
 step = 0.01
 tracks/0/type = "value"
@@ -366,7 +366,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-14, 5)]
+"values": [Vector2(-3, -13)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -390,7 +390,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-0.284489, -2.23751]
+"values": [1.309, -1.309]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jlvik"]

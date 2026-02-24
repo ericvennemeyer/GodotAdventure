@@ -886,6 +886,9 @@ text = "Ninja Blaque"
 [node name="FishEnemy" parent="ObstacleLayer" instance=ExtResource("11_6dkqd")]
 position = Vector2(-141, 53)
 
+[node name="FishEnemy2" parent="ObstacleLayer" instance=ExtResource("11_6dkqd")]
+position = Vector2(-154, -116)
+
 [node name="LockedDoor" parent="." node_paths=PackedStringArray("puzzle_button") instance=ExtResource("6_elpgg")]
 position = Vector2(-40, -11)
 puzzle_button = [NodePath("../PuzzleButton")]

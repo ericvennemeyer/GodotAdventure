@@ -3,6 +3,9 @@ extends CharacterBody2D
 
 
 @export var move_speed: float = 100.0
+@export var acceleration: float = 10.0
+@export var player_knockback_force: float = 150.0
+@export var enemy_knockback_force: float = 120.0
 @export var push_strength: float = 300.0
 
 var is_attacking: bool = false
@@ -48,7 +51,7 @@ func _physics_process(delta: float) -> void:
 
 func move_player() -> void:
 	var move_vector: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	velocity = move_vector * move_speed
+	velocity = velocity.move_toward(move_vector * move_speed, acceleration)
 	
 	if velocity.x > 0:
 		animated_sprite_2d.play("move_right")
@@ -138,10 +141,18 @@ func _on_hit_box_area_2d_body_entered(body: Node2D) -> void:
 	update_hp_bar()
 	if SceneManager.player_hp <= 0:
 		die()
+	
+	var enemy_direction = global_position.direction_to(body.global_position)
+	velocity -= enemy_direction * player_knockback_force
 
 
 func _on_sword_hurt_box_body_entered(body: Node2D) -> void:
-	body.queue_free()
+	var enemy_direction: Vector2 = global_position.direction_to(body.global_position)
+	body.velocity += enemy_direction * enemy_knockback_force
+	
+	body.hp -= 1
+	if body.hp <= 0:
+		body.queue_free()
 
 
 func _on_attack_timer_timeout() -> void:
