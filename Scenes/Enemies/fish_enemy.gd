@@ -39,6 +39,10 @@ func animate_enemy() -> void:
 		animated_sprite_2d.play("move_up")
 
 
+func play_damage_sfx() -> void:
+	$AudioStreamPlayer2D.play()
+
+
 func _on_player_detect_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
 		target = body

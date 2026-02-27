@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://bctnb2shc7j45"]
+[gd_scene load_steps=24 format=3 uid="uid://bctnb2shc7j45"]
 
 [ext_resource type="Script" uid="uid://bf27gvx0w1bdr" path="res://Scenes/Enemies/fish_enemy.gd" id="1_dteix"]
 [ext_resource type="Texture2D" uid="uid://d2gx818i7csmf" path="res://Ninja Adventure - Asset Pack/Actor/Monsters/FishRed/SpriteSheet.png" id="1_lc6dk"]
+[ext_resource type="AudioStream" uid="uid://dvf05a4l8sk0d" path="res://Ninja Adventure - Asset Pack/Sounds/Game/Hit1.wav" id="3_sa8qq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lc6dk"]
 radius = 60.075
@@ -175,5 +176,8 @@ shape = SubResource("CircleShape2D_dteix")
 sprite_frames = SubResource("SpriteFrames_j2a7y")
 animation = &"move_up"
 autoplay = "default"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_sa8qq")
 
 [connection signal="body_entered" from="PlayerDetectArea2D" to="." method="_on_player_detect_area_2d_body_entered"]

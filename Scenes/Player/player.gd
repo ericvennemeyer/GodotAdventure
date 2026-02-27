@@ -9,6 +9,7 @@ extends CharacterBody2D
 @export var push_strength: float = 300.0
 
 var is_attacking: bool = false
+var can_interact: bool = false
 var player_animation: String
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -47,7 +48,7 @@ func _physics_process(delta: float) -> void:
 	
 	update_treasure_label()
 	
-	if Input.is_action_just_pressed("interact") and attack_timer.time_left <= 0:
+	if Input.is_action_just_pressed("interact") and attack_timer.time_left <= 0 and not can_interact:
 		attack()
 	
 	move_and_slide()
@@ -120,6 +121,8 @@ func attack() -> void:
 	is_attacking = true
 	velocity = Vector2.ZERO
 	
+	$SwordAudioPlayer2D.play()
+	
 	player_animation = animated_sprite_2d.animation
 	match player_animation:
 		"move_down":
@@ -138,11 +141,13 @@ func attack() -> void:
 
 func _on_interaction_zone_body_entered(body: Node2D) -> void:
 	if body.is_in_group("interactable"):
+		can_interact = true
 		body.can_interact = true
 
 
 func _on_interaction_zone_body_exited(body: Node2D) -> void:
 	if body.is_in_group("interactable"):
+		can_interact = false
 		body.can_interact = false
 
 
@@ -155,6 +160,8 @@ func _on_hit_box_area_2d_body_entered(body: Node2D) -> void:
 	var enemy_direction = global_position.direction_to(body.global_position)
 	velocity -= enemy_direction * player_knockback_force
 	
+	$HitAudioPlayer2D.play()
+	
 	var hit_flash_color: Color = Color(50, 50, 50)
 	modulate = hit_flash_color
 	await get_tree().create_timer(0.2).timeout
@@ -165,6 +172,8 @@ func _on_hit_box_area_2d_body_entered(body: Node2D) -> void:
 func _on_sword_hurt_box_body_entered(body: Node2D) -> void:
 	var enemy_direction: Vector2 = global_position.direction_to(body.global_position)
 	body.velocity += enemy_direction * enemy_knockback_force
+	
+	body.play_damage_sfx()
 	
 	body.hp -= 1
 	if body.hp <= 0:
