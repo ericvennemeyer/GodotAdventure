@@ -154,6 +154,12 @@ func _on_hit_box_area_2d_body_entered(body: Node2D) -> void:
 	
 	var enemy_direction = global_position.direction_to(body.global_position)
 	velocity -= enemy_direction * player_knockback_force
+	
+	var hit_flash_color: Color = Color(50, 50, 50)
+	modulate = hit_flash_color
+	await get_tree().create_timer(0.2).timeout
+	var default_color: Color = Color(1, 1, 1)
+	modulate = default_color
 
 
 func _on_sword_hurt_box_body_entered(body: Node2D) -> void:
@@ -163,6 +169,13 @@ func _on_sword_hurt_box_body_entered(body: Node2D) -> void:
 	body.hp -= 1
 	if body.hp <= 0:
 		body.queue_free()
+	
+	var hit_flash_color: Color = Color(15, 0, 0)
+	body.modulate = hit_flash_color
+	await get_tree().create_timer(0.2).timeout
+	if is_instance_valid(body):
+		var default_color: Color = Color(1, 1, 1)
+		body.modulate = default_color
 
 
 func _on_attack_timer_timeout() -> void:
