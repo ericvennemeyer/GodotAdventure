@@ -174,17 +174,7 @@ func _on_sword_hurt_box_body_entered(body: Node2D) -> void:
 	body.velocity += enemy_direction * enemy_knockback_force
 	
 	body.play_damage_sfx()
-	
-	body.hp -= 1
-	if body.hp <= 0:
-		body.queue_free()
-	
-	var hit_flash_color: Color = Color(15, 0, 0)
-	body.modulate = hit_flash_color
-	await get_tree().create_timer(0.2).timeout
-	if is_instance_valid(body):
-		var default_color: Color = Color(1, 1, 1)
-		body.modulate = default_color
+	body.take_damage()
 
 
 func _on_attack_timer_timeout() -> void:
